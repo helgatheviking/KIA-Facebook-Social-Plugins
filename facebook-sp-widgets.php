@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: KIA Facebook Social Widgets
+Plugin Name: KIA Facebook Social Plugins
 Plugin URI: http://www.kathyisawesome.com
 Description: Adds open graph tags, like button, facebook commpents and three facebook social plugins as wordpress widgets: Facebook Recommendations, Facebook Activity Feed, and the Facebook Like Box using Facebook's SDK
 Version: 1.3

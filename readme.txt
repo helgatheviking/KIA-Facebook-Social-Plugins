@@ -1,16 +1,18 @@
-=== KIA Facebook Social Widgets ===
+=== KIA Facebook Social Plugins ===
 Contributors: Kathy Darling, Christopher Davis
 Donate link: http://www.kathyisawesome.com/
 Tags: facebook like button, facebook comments, facebook like box, facebook recommendations, facebook activity feed, facebook, widget, widgets
-Requires at least: 3.1.3
+Requires at least: 3.3
 Tested up to: 3.3
-Stable tag: 1.3
+Stable tag: 1.0
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-KIA Facebook Social Widgets adds 3 of the Facebook social plugins to WordPress as widgets: the Like Box, Recommendations, & the Activity Feed, as well as adding support for the Like Button and Facebook Commennts.
+KIA Facebook Social Plugins adds 3 of the Facebook social plugins to WordPress as widgets: the Like Box, Recommendations, & the Activity Feed, as well as adding support for the Like Button and Facebook Commennts.
 
 == Description ==
 
-KIA Facebook Social Widgets is plugin that add three widgets to your WordPress arsenal: a Facebook Like Box, the Facebook Recommendations widget, and the Activity Feed.  This means you won't have to go to the [social plugin](http://developers.facebook.com/docs/plugins/ "social plugin") page anymore.  Additionally, the plugin lets you add a Like Button and Facebook-powered comments. 
+KIA Facebook Social Plugins is plugin that add three widgets to your WordPress arsenal: a Facebook Like Box, the Facebook Recommendations widget, and the Activity Feed.  This means you won't have to go to the [social plugin](http://developers.facebook.com/docs/plugins/ "social plugin") page anymore.  Additionally, the plugin lets you add a Like Button and Facebook-powered comments. 
 
 This plugin is an update of Facebook Social Plugin Widgets by Christopher Davis at http://www.christopherguitar.net/ 
 This plugin loads HTML5 versions instead of the XFBML versions of each of the social plugins, and includes the facebook `all.js` in the footer of your site.

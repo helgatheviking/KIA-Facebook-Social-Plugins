@@ -38,7 +38,7 @@ Border color can be a color name (like "red" or "blue") or a hex color code (lik
 
 = Why don't my widgets work in Internet Explorer? =
 
-IE does a funny thing.  It requires the `<head>` tag to have a special attribute: `xmlns:fb="http://www.facebook.com/2008/fbml"`. FBSPW adds this via a filter on [language attributes](http://codex.wordpress.org/Function_Reference/language_attributes).  You must have this in your theme's `header.php` file to make this work:
+I'm not sure this is still the case with the new version of the FB code, but if it is, it is because IE is garbage.  It requires the `<head>` tag to have a special attribute: `xmlns:fb="http://www.facebook.com/2008/fbml"`. FBSPW adds this via a filter on [language attributes](http://codex.wordpress.org/Function_Reference/language_attributes).  You must have this in your theme's `header.php` file to make this work:
 
 `<html <?php language_attributes(); ?>>`
 
@@ -49,9 +49,14 @@ IE does a funny thing.  It requires the `<head>` tag to have a special attribute
 3. Recommendations widget options
 
 == Changelog ==
+= 1.1 =
+* Fixed a host of issues with the plugin settings
+* changed the like button to appear anywhere the_content() is called
+* added ability to delete plugin settings on uninstall
 
 = 1.0 =
 * The first release!
 * Supports the facebook like box, activity feed, and recommendations as widgets
 * completely replaces your comments.php template with Facebook Comments
 * adds Like Button to the_content
+* took original plugin and made it OOP/class-based

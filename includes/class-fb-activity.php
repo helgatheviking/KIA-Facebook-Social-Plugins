@@ -128,3 +128,4 @@ if( !class_exists( 'KIA_FBSP_Activity_Widget' ) )
 	} // end class
 	
 } // end class_exists
+?>

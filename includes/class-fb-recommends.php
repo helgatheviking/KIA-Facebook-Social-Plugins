@@ -121,3 +121,4 @@ if( !class_exists( 'KIA_FBSP_Recommends_Widget' ) )
 	} // end class
 	
 } // end class_exists
+?>

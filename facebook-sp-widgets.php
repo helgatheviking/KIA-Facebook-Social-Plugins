@@ -40,16 +40,16 @@ if (!function_exists('is_admin')) {
   define( 'CD_FBSP_PATH', plugin_dir_path( __FILE__ ) );
   define( 'CD_FBSP_NAMe', plugin_basename( __FILE__ ) );
 
-if (!class_exists("Facebook_Social_Widgets")) :
+if (!class_exists("KIA_Facebook_Social_Widgets")) :
 
-class Facebook_Social_Widgets {
+class KIA_Facebook_Social_Widgets {
 
-  function Facebook_Social_Widgets(){
+  function KIA_Facebook_Social_Widgets(){
     // Include required files
     $this->includes();
 
     // Set-up Action and Filter Hooks
-    register_activation_hook(__FILE__, 'add_defaults_options');
+    register_activation_hook(__FILE__, array(__CLASS__,'add_defaults_options'));
     register_uninstall_hook(__FILE__, array(__CLASS__,'delete_plugin_options'));
 
     add_action('admin_init', array(__CLASS__,'init' ));
@@ -89,11 +89,10 @@ class Facebook_Social_Widgets {
   // ------------------------------------------------------------------------------
 
   // Define default option settings
-  function posk_add_defaults() {
-    if(get_option('facebook_social_options')) return;
+  function add_defaults_options() {
+    //if(get_option('kia_facebook_social_options')) return false;
 
     $defaults = array( 
-              "display_comments" => "false",
               "comments_title" => __( 'Leave a Reply', 'fb_social_widgets'),
               "comments_width" => "500",
               "comments_color_scheme" => "light",
@@ -103,7 +102,7 @@ class Facebook_Social_Widgets {
               "like_width" => "500",
               "like_verb" => "like"
       );
-      update_option('facebook_social_options', $defaults);
+      update_option('kia_facebook_social_options', $defaults);
   }
 
 
@@ -113,7 +112,8 @@ class Facebook_Social_Widgets {
 
   // Delete options table entries ONLY when plugin deactivated AND deleted
   function delete_plugin_options() {
-    delete_option('facebook_social_options');
+    $options = get_option('kia_facebook_social_options', true);
+    if(isset($options['delete'])) delete_option('kia_facebook_social_options');
   }
 
 
@@ -124,7 +124,7 @@ class Facebook_Social_Widgets {
 
   // Init plugin options to white list our options
   function init(){
-    register_setting( 'facebook_social_plugin_options', 'facebook_social_options', array(__CLASS__,'validate_options') );
+    register_setting( 'kia_facebook_social_options', 'kia_facebook_social_options', array(__CLASS__,'validate_options') );
   }
 
   // ------------------------------------------------------------------------------
@@ -168,7 +168,7 @@ class Facebook_Social_Widgets {
 
   // Render the Plugin options form
   function render_form() {
-    require('includes/plugin-options.php');
+    include('includes/plugin-options.php');
   }
 
   // Sanitize and validate input. Accepts an array, return a sanitized array.
@@ -178,14 +178,15 @@ class Facebook_Social_Widgets {
 
      // strip html from textboxes
     $clean['app_id'] =  wp_filter_nohtml_kses($input['app_id']); // Sanitize textbox input (strip html tags, and escape characters)
-    
+    $clean['delete'] =  isset( $input['delete'] ) ? 'true' : 'false' ;  //checkbox
+
     $clean['display_comments'] =  isset( $input['display_comments'] ) ? 'true' : 'false' ;  //checkbox
     $clean['comments_title'] =  wp_filter_nohtml_kses($input['comments_title']); // Sanitize textbox input (strip html tags, and escape characters)
     $clean['comments_color_scheme'] =  ($input['comments_color_scheme'] == 'dark') ? 'dark' : 'light'; //radio
     $clean['comments_width'] =  absint($input['comments_width']); // Sanitize textbox input (force number)
     $clean['num_comments'] =  absint($input['num_comments']); // Sanitize textbox input (force number)
 
-    $clean['display_like'] =  isset( $input['display_comments'] ) ? 'true' : 'false' ;  //checkbox
+    $clean['display_like'] =  isset( $input['display_like'] ) ? 'true' : 'false' ;  //checkbox
     $clean['like_send'] =  isset( $input['like_send'] ) ? 'true' : 'false' ;  //checkbox
 
     $allowed = array('standard','button_count','box_count');
@@ -216,7 +217,7 @@ class Facebook_Social_Widgets {
    * Prints out the Facebook JavaScript code.
    */
   function print_script()  {
-    $options = get_option('facebook_social_options');
+    $options = get_option('kia_facebook_social_options');
     $app_id = empty($options['app_id']) ? ' ' : 'appId='.$options['app_id'] ;
       
   ?>
@@ -261,7 +262,7 @@ class Facebook_Social_Widgets {
   * Use our template instead of comments.php
   */
   function facebook_comments( $file ) {
-    $options = get_option('facebook_social_options');
+    $options = get_option('kia_facebook_social_options');
 
     if($options['display_comments']=="true") {
       $file = plugin_dir_path(__FILE__) . '/includes/comments.php';
@@ -276,7 +277,7 @@ class Facebook_Social_Widgets {
   function open_graph() {
     global $post;
 
-    $options = get_option('facebook_social_options');
+    $options = get_option('kia_facebook_social_options');
     $app_id = empty($options['display_like']) ? ' ' : 'appId='.$options['app_id'] ;
 
     if ( !is_singular()) return; //if it is not a post or a page
@@ -296,9 +297,9 @@ class Facebook_Social_Widgets {
   * Filter in the Like Button
   */
   function like_button($content){
-    $options = get_option('facebook_social_options');
+    $options = get_option('kia_facebook_social_options');
 
-    if(is_singular() && $options['display_comments']=="true") {
+    if($options['display_like']=="true") {
       $send = $options['like_send'];  
       $layout = $options['like_layout'];
       $width = $options['like_width'];
@@ -318,6 +319,7 @@ endif;
 * Launch the whole plugin
 */
 global $fb_social_widgets;
-if (class_exists("Facebook_Social_Widgets") && !$fb_social_widgets) {
-    $fb_social_widgets = new Facebook_Social_Widgets(); 
+if (class_exists("KIA_Facebook_Social_Widgets") && !$fb_social_widgets) {
+    $fb_social_widgets = new KIA_Facebook_Social_Widgets(); 
 } 
+?>

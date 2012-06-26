@@ -19,8 +19,10 @@ This plugin loads HTML5 versions instead of the XFBML versions of each of the so
 
 == Installation ==
 
-1. Download and unzip the `fb-sp-widgets.zip` file
-2. Upload the `fb-social-widgets` folder to your plugins directory
+1. Download and unzip the `KIA-Facebook-Social-Plugins.zip` file
+	nb: if you download this from Github your zip will have extra text before and after
+2. Upload the `KIA-Facebook-Social-Plugins` folder to your plugins directory
+	nb: same as above. github adds my username + some version specific code to the folder name
 3. Activate the plugin through the 'Plugins' menu in WordPress
 4. Add the widgets to your sidebar
 

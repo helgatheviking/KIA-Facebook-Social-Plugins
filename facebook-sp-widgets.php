@@ -37,8 +37,6 @@ if (!function_exists('is_admin')) {
 }
 
 
-  define( 'CD_FBSP_PATH', plugin_dir_path( __FILE__ ) );
-  define( 'CD_FBSP_NAMe', plugin_basename( __FILE__ ) );
 
 if (!class_exists("KIA_Facebook_Social_Widgets")) :
 
@@ -90,7 +88,7 @@ class KIA_Facebook_Social_Widgets {
 
   // Define default option settings
   function add_defaults_options() {
-    //if(get_option('kia_facebook_social_options')) return false;
+    if(get_option('kia_facebook_social_options')) return false;
 
     $defaults = array( 
               "comments_title" => __( 'Leave a Reply', 'fb_social_widgets'),

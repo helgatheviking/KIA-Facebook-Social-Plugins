@@ -242,7 +242,7 @@ class KIA_Facebook_Social_Widgets {
     $atts .= ' xmlns:fb="http://ogp.me/ns/fb#"';
 
     if( preg_match( '/xmlns:og="(.*)"/', $atts ) ) return $atts;
-    $attributes .= ' xmlns:og="http://opengraphprotocol.org/schema/"';
+    $atts .= ' xmlns:og="http://opengraphprotocol.org/schema/"';
 
     return $atts;
   }

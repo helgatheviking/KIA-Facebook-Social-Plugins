@@ -8,10 +8,10 @@ if( !class_exists( 'KIA_FBSP_Recommends_Widget' ) )
 		{
 			$widget_ops = array(
 				'classname' 	=> 'cd-fb-recommendation-widget',
-				'description' 	=> __( 'Displays a Facebook Recommendations Box', 'cd-fbspw' )
+				'description' 	=> __( 'Displays a Facebook Recommendations Box', 'kia-fbsp' )
 			);
 			
-			$this->WP_Widget( 'KIA_FBSP_Recommends_Widget', __( 'Facebook Recommendations', 'cd-fbspw' ), $widget_ops );
+			$this->WP_Widget( 'KIA_FBSP_Recommends_Widget', __( 'Facebook Recommendations', 'kia-fbsp' ), $widget_ops );
 		}
 		
 		function form( $instance )
@@ -32,34 +32,34 @@ if( !class_exists( 'KIA_FBSP_Recommends_Widget' ) )
 			
 			?>
 			<p>
-				<label for="cd-fbr-title"><?php _e( 'Title:', 'cd-fbspw' ); ?></label>
+				<label for="cd-fbr-title"><?php _e( 'Title:', 'kia-fbsp' ); ?></label>
 				<input id="cd-fbr-title" class="widefat" name="<?php echo $this-> get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 			</p>
 			<p>
-				<label for="cd-fbr-url"><?php _e( 'Domain:', 'cd-fbspw' ); ?></label>
+				<label for="cd-fbr-url"><?php _e( 'Domain:', 'kia-fbsp' ); ?></label>
 				<input id="cd-fbr-url" class="widefat" name="<?php echo $this-> get_field_name( 'url' ); ?>" type="text" value="<?php echo esc_attr( $url ); ?>" />
 			</p>
 			<p>
-				<label for="cd-fbr-width"><?php _e( 'Width:', 'cd-fbspw' ); ?></label>
+				<label for="cd-fbr-width"><?php _e( 'Width:', 'kia-fbsp' ); ?></label>
 				<input id="cd-fbr-width" class="widefat" name="<?php echo $this->get_field_name( 'width' ); ?>" type="text" value="<?php echo esc_attr( $width ); ?>" />
 			</p>
 			<p>
-				<label for="cd-fbr-height"><?php _e( 'Height:', 'cd-fbspw' ); ?></label>
+				<label for="cd-fbr-height"><?php _e( 'Height:', 'kia-fbsp' ); ?></label>
 				<input id="cd-fbr-height" class="widefat" name="<?php echo $this->get_field_name( 'height' ); ?>" type="text" value="<?php echo esc_attr( $height ); ?>" />
 			</p>
 			<p>
-				<label for="cd-fbr-border"><?php _e( 'Border Color:', 'cd-fbspw' ); ?></label>
+				<label for="cd-fbr-border"><?php _e( 'Border Color:', 'kia-fbsp' ); ?></label>
 				<input id="cd-fbr-border" class="widefat" name="<?php echo $this->get_field_name( 'border_color' ); ?>" type="text" value="<?php echo esc_attr( $border_color ); ?>" />
 			</p>
 			<p>
-				<label for="cd-fbr-color"><?php _e( 'Color Scheme:', 'cd-fbspw' ); ?></label>
+				<label for="cd-fbr-color"><?php _e( 'Color Scheme:', 'kia-fbsp' ); ?></label>
 				<select id="cd-fbr-color" name="<?php echo $this->get_field_name( 'color_scheme' ); ?>">
-					<option value="light" <?php selected( $color_scheme, 'light' ); ?>><?php _e( 'Light', 'cd-fbspw'); ?></option>
-					<option value="dark" <?php selected( $color_scheme, 'dark' ); ?>><?php _e( 'Dark', 'cd-fbspw' ); ?></option>
+					<option value="light" <?php selected( $color_scheme, 'light' ); ?>><?php _e( 'Light', 'kia-fbsp'); ?></option>
+					<option value="dark" <?php selected( $color_scheme, 'dark' ); ?>><?php _e( 'Dark', 'kia-fbsp' ); ?></option>
 				</select>
 			</p>
 			<p>
-				<label for="cd-fbr-font"><?php _e( 'Font:', 'cd-fbspw' ); ?></label>
+				<label for="cd-fbr-font"><?php _e( 'Font:', 'kia-fbsp' ); ?></label>
 				<select id="cd-fbr-font" name="<?php echo $this->get_field_name( 'font' ); ?>">
 					<option value="" <?php selected( $font, '' ); ?>>&nbsp;</option>
 					<option value="arial" <?php selected( $font, 'arial' ); ?>>Arial</option>
@@ -72,7 +72,7 @@ if( !class_exists( 'KIA_FBSP_Recommends_Widget' ) )
 			</p>
 			<p>
 				<input id="cd-fbr-header" name="<?php echo $this->get_field_name( 'show_header' ); ?>" type="checkbox" <?php checked( $show_header, 'on' ); ?> />
-				<label for="cd-fbr-header"><?php _e( 'Check to show the facebook header', 'cd-fbspw' ); ?></label>
+				<label for="cd-fbr-header"><?php _e( 'Check to show the facebook header', 'kia-fbsp' ); ?></label>
 			</p>
 			<?php	
 		}

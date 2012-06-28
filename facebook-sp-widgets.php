@@ -50,6 +50,10 @@ class KIA_Facebook_Social_Widgets {
     register_activation_hook(__FILE__, array(__CLASS__,'add_defaults_options'));
     register_uninstall_hook(__FILE__, array(__CLASS__,'delete_plugin_options'));
 
+
+    //load plugin text domain for translations
+    add_action('plugins_loaded', array(__CLASS__,'load_text_domain'));
+
     add_action('admin_init', array(__CLASS__,'init' ));
     add_action('admin_menu', array(__CLASS__,'add_options_page'));
     add_action('admin_print_scripts-settings_page_facebook-social-widgets', array(__CLASS__,'enqueue_scripts'));
@@ -72,7 +76,8 @@ class KIA_Facebook_Social_Widgets {
    **/
   function includes() {
 
-    $includes = array ( 'includes/class-fb-like.php',
+    $includes = array ( 'includes/class-fb-like-box.php',
+              'includes/class-fb-like-button.php',
               'includes/class-fb-recommends.php',
               'includes/class-fb-activity.php'
               );
@@ -83,7 +88,7 @@ class KIA_Facebook_Social_Widgets {
 
 
   // ------------------------------------------------------------------------------
-  // CALLBACK FUNCTION FOR: register_activation_hook(__FILE__, 'add_defaults_options')
+  // CALLBACK FUNCTION FOR: register_activation_hook(__FILE__,  array(__CLASS__,'add_defaults_options'));
   // ------------------------------------------------------------------------------
 
   // Define default option settings
@@ -105,7 +110,7 @@ class KIA_Facebook_Social_Widgets {
 
 
   // --------------------------------------------------------------------------------------
-  // CALLBACK FUNCTION FOR: register_uninstall_hook(__FILE__, 'delete_plugin_options')
+  // CALLBACK FUNCTION FOR: register_uninstall_hook(__FILE__,  array(__CLASS__,'delete_plugin_options'))
   // --------------------------------------------------------------------------------------
 
   // Delete options table entries ONLY when plugin deactivated AND deleted
@@ -114,7 +119,13 @@ class KIA_Facebook_Social_Widgets {
     if(isset($options['delete'])) delete_option('kia_facebook_social_options');
   }
 
+  // ------------------------------------------------------------------------------
+  // CALLBACK FUNCTION FOR: add_action('admin_init', array(__CLASS__,'load_text_domain' ))
+  // ------------------------------------------------------------------------------
 
+    function load_text_domain() {
+      load_plugin_textdomain( 'kia-fbsp', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+    }
 
   // ------------------------------------------------------------------------------
   // CALLBACK FUNCTION FOR: add_action('admin_init', 'init' )
@@ -251,7 +262,8 @@ class KIA_Facebook_Social_Widgets {
   * Register the widget here to make sure we get the right class...
   */
   function register_widgets(){
-      register_widget( 'KIA_FBSP_Like_Widget' );
+      register_widget( 'KIA_FBSP_Like_Button_Widget' );
+      register_widget( 'KIA_FBSP_Like_Box_Widget' );
       register_widget( 'KIA_FBSP_Recommends_Widget' );
       register_widget( 'KIA_FBSP_Activity_Widget' );
   }

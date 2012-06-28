@@ -1,17 +1,17 @@
 <?php
 
-if( !class_exists( 'KIA_FBSP_Like_Widget' ) )
+if( !class_exists( 'KIA_FBSP_Like_Box_Widget' ) )
 {
-	class KIA_FBSP_Like_Widget extends WP_Widget
+	class KIA_FBSP_Like_Box_Widget extends WP_Widget
 	{
-		function KIA_FBSP_Like_Widget()
+		function KIA_FBSP_Like_Box_Widget()
 		{
 			$widget_ops = array(
-				'classname' 	=> 'cd-fb-like-widget',
+				'classname' 	=> 'cd-fb-like-box-widget',
 				'description' 	=> __('Displays a Facebook Like Box', 'cd-fbspw' ),
 			);
 			
-			$this->WP_Widget( 'KIA_FBSP_Like_Widget', __('Facebook Like Box', 'cd-fbspw' ), $widget_ops );
+			$this->WP_Widget( 'KIA_FBSP_Like_Box_Widget', __('Facebook Like Box', 'cd-fbspw' ), $widget_ops );
 		}
 		
 		function form( $instance )
